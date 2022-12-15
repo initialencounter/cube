@@ -26,4 +26,4 @@ Rubik's Cube plugin based on nonebot framework,基于nonebot框架的魔方插�
 ### QQ群399899914
 
 # 感谢
-## mofang.py参考b站--神闪避的雪亲王
+## mofang.py参考b站--[神闪避的雪亲王](https://space.bilibili.com/16355723)
