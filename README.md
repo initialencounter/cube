@@ -2,8 +2,8 @@
 Rubik's Cube plugin based on nonebot framework,基于nonebot框架的魔方插件
 
 ## 用法
-将nonebot_plugin_cube拷贝到bot根目录到src/plugin目录下
-在bot.py中添加如下命令
+将nonebot_plugin_cube拷贝到bot根目录src/plugin下
+在bot.py中添加如下代码
 `nonebot.load_plugins('src/plugins/nonebot_plugin_cube')`
 
 ## 命令
