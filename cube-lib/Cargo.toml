@@ -1,0 +1,23 @@
+[package]
+name = "cube-lib"
+version = "0.1.0"
+edition = "2021"
+
+authors = ["inintencunter <2911583893@qq.com>"]
+include = [
+    "readme.md",
+    "src",
+    "Cargo.toml",
+]
+description = "魔法 核心库"
+homepage = "https://github.com/initialencounter/cube"
+readme = "readme.md"
+keywords = [
+    "cube",
+    "game",
+    "cube-lib",
+]
+license = "AGPL-3.0"
+repository = "https://github.com/initialencounter/cube"
+
+[dependencies]
