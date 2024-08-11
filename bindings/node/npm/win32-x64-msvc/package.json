@@ -1,0 +1,18 @@
+{
+  "name": "@initencounter/cube-win32-x64-msvc",
+  "version": "0.0.0",
+  "os": [
+    "win32"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "main": "cube.win32-x64-msvc.node",
+  "files": [
+    "cube.win32-x64-msvc.node"
+  ],
+  "license": "AGPL-3.0",
+  "engines": {
+    "node": ">= 10"
+  }
+}
