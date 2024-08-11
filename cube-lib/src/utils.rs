@@ -12,8 +12,7 @@ pub fn rot(face: Face, rev: bool) -> Face {
             }
             i_ += 1;
         }
-    }
-    else {
+    } else {
         let mut i_ = 0;
         for i in (0..3).rev() {
             let mut j_ = 0;

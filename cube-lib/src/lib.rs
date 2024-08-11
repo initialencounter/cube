@@ -33,7 +33,7 @@ impl Cube {
             down: [[46, 47, 48], [49, 50, 51], [52, 53, 54]],
         }
     }
-    pub fn reset(&mut self){
+    pub fn reset(&mut self) {
         self.front = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
         self.back = [[10, 11, 12], [13, 14, 15], [16, 17, 18]];
         self.left = [[19, 20, 21], [22, 23, 24], [25, 26, 27]];
@@ -42,7 +42,7 @@ impl Cube {
         self.down = [[46, 47, 48], [49, 50, 51], [52, 53, 54]];
     }
 
-    pub fn rot_front(&mut self, rev: bool){
+    fn rot_front(&mut self, rev: bool) {
         let temp_left = self.left;
         let temp_up = self.up[2];
         let temp_right = self.right;
@@ -50,23 +50,22 @@ impl Cube {
         if rev {
             self.front = rot(self.front, rev);
             for i in 0..3 {
-                self.left[i][2] = temp_up[2-i];
-                self.right[i][0] = temp_down[2-i];
+                self.left[i][2] = temp_up[2 - i];
+                self.right[i][0] = temp_down[2 - i];
                 self.up[2][i] = temp_right[i][0];
                 self.down[0][i] = temp_left[i][2];
             }
-        }
-        else {
+        } else {
             self.front = rot(self.front, rev);
             for i in 0..3 {
                 self.left[i][2] = temp_down[i];
                 self.right[i][0] = temp_up[i];
-                self.up[2][i] = temp_left[2-i][2];
-                self.down[0][i] = temp_right[2-i][0];
+                self.up[2][i] = temp_left[2 - i][2];
+                self.down[0][i] = temp_right[2 - i][0];
             }
         }
     }
-    pub fn rot_back(&mut self, rev: bool){
+    fn rot_back(&mut self, rev: bool) {
         let temp_left = self.left;
         let temp_up = self.up[0];
         let temp_right = self.right;
@@ -76,21 +75,20 @@ impl Cube {
             for i in 0..3 {
                 self.left[i][0] = temp_down[i];
                 self.right[i][2] = temp_up[i];
-                self.up[0][i] = temp_left[2-i][0];
-                self.down[2][i] = temp_right[2-i][2];
+                self.up[0][i] = temp_left[2 - i][0];
+                self.down[2][i] = temp_right[2 - i][2];
             }
-        }
-        else {
+        } else {
             self.back = rot(self.back, rev);
             for i in 0..3 {
-                self.left[i][0] = temp_up[2-i];
-                self.right[i][2] = temp_down[2-i];
+                self.left[i][0] = temp_up[2 - i];
+                self.right[i][2] = temp_down[2 - i];
                 self.up[0][i] = temp_right[i][2];
                 self.down[2][i] = temp_left[i][0];
             }
         }
     }
-    pub fn rot_left(&mut self, rev: bool){
+    fn rot_left(&mut self, rev: bool) {
         let temp_front = self.front;
         let temp_up = self.up;
         let temp_back = self.back;
@@ -99,22 +97,21 @@ impl Cube {
             self.left = rot(self.left, rev);
             for i in 0..3 {
                 self.front[i][0] = temp_down[i][0];
-                self.back[i][2] = temp_up[2-i][0];
-                self.down[i][0] = temp_back[2-i][2];
+                self.back[i][2] = temp_up[2 - i][0];
+                self.down[i][0] = temp_back[2 - i][2];
                 self.up[i][0] = temp_front[i][0];
             }
-        }
-        else {
+        } else {
             self.left = rot(self.left, rev);
             for i in 0..3 {
                 self.front[i][0] = temp_up[i][0];
-                self.up[i][0] = temp_back[2-i][2];
-                self.back[i][2] = temp_down[2-i][0];
+                self.up[i][0] = temp_back[2 - i][2];
+                self.back[i][2] = temp_down[2 - i][0];
                 self.down[i][0] = temp_front[i][0];
             }
         }
     }
-    pub fn rot_right(&mut self, rev: bool){
+    fn rot_right(&mut self, rev: bool) {
         let temp_front = self.front;
         let temp_up = self.up;
         let temp_back = self.back;
@@ -123,22 +120,21 @@ impl Cube {
             self.right = rot(self.right, rev);
             for i in 0..3 {
                 self.front[i][2] = temp_up[i][2];
-                self.back[i][0] = temp_down[2-i][2];
+                self.back[i][0] = temp_down[2 - i][2];
                 self.down[i][2] = temp_front[i][2];
-                self.up[i][2] = temp_back[2-i][0];
+                self.up[i][2] = temp_back[2 - i][0];
             }
-        }
-        else {
+        } else {
             self.right = rot(self.right, rev);
             for i in 0..3 {
                 self.front[i][2] = temp_down[i][2];
                 self.up[i][2] = temp_front[i][2];
-                self.back[i][0] = temp_up[2-i][2];
-                self.down[i][2] = temp_back[2-i][0];
+                self.back[i][0] = temp_up[2 - i][2];
+                self.down[i][2] = temp_back[2 - i][0];
             }
         }
     }
-    pub fn rot_up(&mut self, rev: bool){
+    fn rot_up(&mut self, rev: bool) {
         let temp_front = self.front;
         let temp_left = self.left;
         let temp_back = self.back;
@@ -151,8 +147,7 @@ impl Cube {
                 self.back[0][i] = temp_right[0][i];
                 self.right[0][i] = temp_front[0][i];
             }
-        }
-        else {
+        } else {
             self.up = rot(self.up, rev);
             for i in 0..3 {
                 self.front[0][i] = temp_right[0][i];
@@ -162,7 +157,7 @@ impl Cube {
             }
         }
     }
-    pub fn rot_down(&mut self, rev: bool){
+    fn rot_down(&mut self, rev: bool) {
         let temp_front = self.front;
         let temp_left = self.left;
         let temp_back = self.back;
@@ -175,8 +170,7 @@ impl Cube {
                 self.back[2][i] = temp_left[2][i];
                 self.right[2][i] = temp_back[2][i];
             }
-        }
-        else {
+        } else {
             self.down = rot(self.down, rev);
             for i in 0..3 {
                 self.front[2][i] = temp_left[2][i];
@@ -185,7 +179,6 @@ impl Cube {
                 self.right[2][i] = temp_front[2][i];
             }
         }
-
     }
 
     pub fn is_solved(&self) -> bool {
@@ -220,7 +213,7 @@ impl Cube {
         true
     }
 
-    pub fn rot(&mut self, operation: char){
+    pub fn rot(&mut self, operation: char) {
         match operation {
             'F' => self.rot_front(false),
             'f' => self.rot_front(true),
@@ -238,17 +231,19 @@ impl Cube {
         }
     }
 
-    pub fn scramble(&mut self){
+    pub fn scramble(&mut self) {
         for _ in 0..1000 {
             let operation = random::<u8>() % 12;
             self.rot(CUBE_OPERATIONS_CODE[operation as usize]);
         }
     }
 
-    pub fn rots(&mut self, operations: &str){
+    pub fn rots(&mut self, operations: &str) {
+        self.last_step.clear();
         for operation in operations.chars() {
             if CUBE_OPERATIONS_CODE.contains(&operation) {
                 self.rot(operation);
+                self.last_step.push(operation);
             }
         }
     }
