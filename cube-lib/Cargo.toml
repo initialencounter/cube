@@ -1,6 +1,6 @@
 [package]
 name = "cube-lib"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 
 authors = ["inintencunter <2911583893@qq.com>"]
@@ -9,7 +9,7 @@ include = [
     "src",
     "Cargo.toml",
 ]
-description = "魔法 核心库"
+description = "魔方 核心库"
 homepage = "https://github.com/initialencounter/cube"
 readme = "readme.md"
 keywords = [
@@ -21,4 +21,4 @@ license = "AGPL-3.0"
 repository = "https://github.com/initialencounter/cube"
 
 [dependencies]
-rand = "0.8.4"
+rand = "0.8.5"
