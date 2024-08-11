@@ -1,7 +1,10 @@
 import test from 'ava'
 
-import { sum } from '../index.js'
+import { CubeCore } from '../index.js'
 
-test('sum from native', (t) => {
-  t.is(sum(1, 2), 3)
+test('cube from native', (t) => {
+  let operation = 'Uu';
+  let cube = new CubeCore();
+  cube.rotate(operation);
+  t.is(operation, cube.getLastStep());
 })
