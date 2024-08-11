@@ -8,15 +8,15 @@ use utils::{rot};
 const CUBE_OPERATIONS_CODE: [char; 12] = [
     'F', 'f', 'B', 'b', 'L', 'l', 'R', 'r', 'U', 'u', 'D', 'd'];
 
-pub(crate) struct Cube {
-    start_time: i64,
-    last_step: Vec<char>,
-    front: Face,
-    back: Face,
-    left: Face,
-    right: Face,
-    up: Face,
-    down: Face,
+pub struct Cube {
+    pub start_time: i64,
+    pub last_step: Vec<char>,
+    pub front: Face,
+    pub back: Face,
+    pub left: Face,
+    pub right: Face,
+    pub up: Face,
+    pub down: Face,
 }
 impl Cube {
     pub fn new() -> Cube {
