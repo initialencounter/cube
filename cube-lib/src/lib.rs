@@ -8,6 +8,7 @@ use utils::{rot};
 const CUBE_OPERATIONS_CODE: [char; 12] = [
     'F', 'f', 'B', 'b', 'L', 'l', 'R', 'r', 'U', 'u', 'D', 'd'];
 
+#[derive(Clone)]
 pub struct Cube {
     pub start_time: i64,
     pub last_step: Vec<char>,
