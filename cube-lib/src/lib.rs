@@ -46,9 +46,9 @@ impl Cube {
         let temp_left = self.left;
         let temp_up = self.up[2];
         let temp_right = self.right;
+        self.front = rot(self.front, rev);
         let temp_down = self.down[0];
         if rev {
-            self.front = rot(self.front, rev);
             for i in 0..3 {
                 self.left[i][2] = temp_up[2 - i];
                 self.right[i][0] = temp_down[2 - i];
@@ -56,7 +56,6 @@ impl Cube {
                 self.down[0][i] = temp_left[i][2];
             }
         } else {
-            self.front = rot(self.front, rev);
             for i in 0..3 {
                 self.left[i][2] = temp_down[i];
                 self.right[i][0] = temp_up[i];
@@ -69,9 +68,9 @@ impl Cube {
         let temp_left = self.left;
         let temp_up = self.up[0];
         let temp_right = self.right;
+        self.back = rot(self.back, rev);
         let temp_down = self.down[2];
         if rev {
-            self.back = rot(self.back, rev);
             for i in 0..3 {
                 self.left[i][0] = temp_down[i];
                 self.right[i][2] = temp_up[i];
@@ -79,7 +78,6 @@ impl Cube {
                 self.down[2][i] = temp_right[2 - i][2];
             }
         } else {
-            self.back = rot(self.back, rev);
             for i in 0..3 {
                 self.left[i][0] = temp_up[2 - i];
                 self.right[i][2] = temp_down[2 - i];
@@ -93,8 +91,8 @@ impl Cube {
         let temp_up = self.up;
         let temp_back = self.back;
         let temp_down = self.down;
+        self.left = rot(self.left, rev);
         if rev {
-            self.left = rot(self.left, rev);
             for i in 0..3 {
                 self.front[i][0] = temp_down[i][0];
                 self.back[i][2] = temp_up[2 - i][0];
@@ -102,7 +100,6 @@ impl Cube {
                 self.up[i][0] = temp_front[i][0];
             }
         } else {
-            self.left = rot(self.left, rev);
             for i in 0..3 {
                 self.front[i][0] = temp_up[i][0];
                 self.up[i][0] = temp_back[2 - i][2];
@@ -116,8 +113,8 @@ impl Cube {
         let temp_up = self.up;
         let temp_back = self.back;
         let temp_down = self.down;
+        self.right = rot(self.right, rev);
         if rev {
-            self.right = rot(self.right, rev);
             for i in 0..3 {
                 self.front[i][2] = temp_up[i][2];
                 self.back[i][0] = temp_down[2 - i][2];
@@ -125,7 +122,6 @@ impl Cube {
                 self.up[i][2] = temp_back[2 - i][0];
             }
         } else {
-            self.right = rot(self.right, rev);
             for i in 0..3 {
                 self.front[i][2] = temp_down[i][2];
                 self.up[i][2] = temp_front[i][2];
@@ -139,8 +135,8 @@ impl Cube {
         let temp_left = self.left;
         let temp_back = self.back;
         let temp_right = self.right;
+        self.up = rot(self.up, rev);
         if rev {
-            self.up = rot(self.up, rev);
             for i in 0..3 {
                 self.front[0][i] = temp_left[0][i];
                 self.left[0][i] = temp_back[0][i];
@@ -148,7 +144,6 @@ impl Cube {
                 self.right[0][i] = temp_front[0][i];
             }
         } else {
-            self.up = rot(self.up, rev);
             for i in 0..3 {
                 self.front[0][i] = temp_right[0][i];
                 self.left[0][i] = temp_front[0][i];
@@ -162,8 +157,8 @@ impl Cube {
         let temp_left = self.left;
         let temp_back = self.back;
         let temp_right = self.right;
+        self.down = rot(self.down, rev);
         if rev {
-            self.down = rot(self.down, rev);
             for i in 0..3 {
                 self.front[2][i] = temp_right[2][i];
                 self.left[2][i] = temp_front[2][i];
@@ -171,7 +166,6 @@ impl Cube {
                 self.right[2][i] = temp_back[2][i];
             }
         } else {
-            self.down = rot(self.down, rev);
             for i in 0..3 {
                 self.front[2][i] = temp_left[2][i];
                 self.left[2][i] = temp_back[2][i];
