@@ -41,4 +41,14 @@ impl CubeCore {
     pub fn get_last_step(&self) -> String {
         self.inner.last_step.clone()
     }
+
+    #[napi]
+    pub fn scramble(&mut self, steps: u32) {
+        self.inner.scramble(steps);
+    }
+
+    #[napi]
+    pub fn is_solved(&mut self) -> bool {
+        self.inner.is_solved()
+    }
 }

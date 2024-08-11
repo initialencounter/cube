@@ -10,4 +10,6 @@ export declare class CubeCore {
   reset(): void
   getCube(): number[][][]
   getLastStep(): string
+  scramble(steps: number): void
+  isSolved(): boolean
 }
