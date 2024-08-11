@@ -227,8 +227,8 @@ impl Cube {
         }
     }
 
-    pub fn scramble(&mut self) {
-        for _ in 0..1000 {
+    pub fn scramble(&mut self, steps: u32) {
+        for _ in 0..steps {
             let operation = random::<u8>() % 12;
             self.rot(CUBE_OPERATIONS_CODE[operation as usize]);
         }
