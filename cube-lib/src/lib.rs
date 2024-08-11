@@ -183,6 +183,38 @@ impl Cube {
         }
 
     }
+
+    pub fn is_solved(&self) -> bool {
+        for i in 0..3 {
+            for j in 0..3 {
+                match self.front[i][j] {
+                    1..=9 => (),
+                    _ => return false,
+                }
+                match self.back[i][j] {
+                    10..=18 => (),
+                    _ => return false,
+                }
+                match self.left[i][j] {
+                    19..=27 => (),
+                    _ => return false,
+                }
+                match self.right[i][j] {
+                    28..=36 => (),
+                    _ => return false,
+                }
+                match self.up[i][j] {
+                    37..=45 => (),
+                    _ => return false,
+                }
+                match self.down[i][j] {
+                    46..=54 => (),
+                    _ => return false,
+                }
+            }
+        }
+        true
+    }
 }
 
 #[cfg(test)]
@@ -636,5 +668,13 @@ mod tests {
             [31, 32, 33],
             [16, 17, 18]]);
     }
-
+    #[test]
+    fn it_works_is_solved() {
+        let mut cube = Cube::new();
+        cube.rot_back(false);
+        cube.rot_back(true);
+        assert_eq!(cube.is_solved(), true);
+        cube.rot_back(true);
+        assert_eq!(cube.is_solved(), false);
+    }
 }
