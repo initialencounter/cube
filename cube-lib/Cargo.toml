@@ -21,3 +21,4 @@ license = "AGPL-3.0"
 repository = "https://github.com/initialencounter/cube"
 
 [dependencies]
+rand = "0.8.4"

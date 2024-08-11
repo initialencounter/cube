@@ -1,8 +1,12 @@
 mod utils;
 mod types;
 
+use rand::random;
 pub use types::{Face};
 use utils::{rot};
+
+const CUBE_OPERATIONS_CODE: [char; 12] = [
+    'F', 'f', 'B', 'b', 'L', 'l', 'R', 'r', 'U', 'u', 'D', 'd'];
 
 pub(crate) struct Cube {
     start_time: i64,
@@ -214,6 +218,39 @@ impl Cube {
             }
         }
         true
+    }
+
+    pub fn rot(&mut self, operation: char){
+        match operation {
+            'F' => self.rot_front(false),
+            'f' => self.rot_front(true),
+            'B' => self.rot_back(false),
+            'b' => self.rot_back(true),
+            'L' => self.rot_left(false),
+            'l' => self.rot_left(true),
+            'R' => self.rot_right(false),
+            'r' => self.rot_right(true),
+            'U' => self.rot_up(false),
+            'u' => self.rot_up(true),
+            'D' => self.rot_down(false),
+            'd' => self.rot_down(true),
+            _ => (),
+        }
+    }
+
+    pub fn scramble(&mut self){
+        for _ in 0..1000 {
+            let operation = random::<u8>() % 12;
+            self.rot(CUBE_OPERATIONS_CODE[operation as usize]);
+        }
+    }
+
+    pub fn rots(&mut self, operations: &str){
+        for operation in operations.chars() {
+            if CUBE_OPERATIONS_CODE.contains(&operation) {
+                self.rot(operation);
+            }
+        }
     }
 }
 
@@ -676,5 +713,13 @@ mod tests {
         assert_eq!(cube.is_solved(), true);
         cube.rot_back(true);
         assert_eq!(cube.is_solved(), false);
+    }
+
+    #[test]
+    fn it_works_rot() {
+        let mut cube = Cube::new();
+        cube.rot('F');
+        cube.rot('f');
+        assert_eq!(cube.is_solved(), true);
     }
 }
