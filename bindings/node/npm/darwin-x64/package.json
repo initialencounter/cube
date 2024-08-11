@@ -7,6 +7,19 @@
   "cpu": [
     "x64"
   ],
+  "author": {
+    "name": "initencounter",
+    "email": "2911583893@qq.com",
+    "url": "https://github.com/initialencounter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/initialencounter/cube"
+  },
+  "bugs": {
+    "url": "https://github.com/initialencounter/cube/issues"
+  },
+  "homepage": "https://github.com/initialencounter/cube/tree/main/bindings/node",
   "main": "cube.darwin-x64.node",
   "files": [
     "cube.darwin-x64.node"
