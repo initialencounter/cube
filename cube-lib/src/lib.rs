@@ -1,6 +1,7 @@
 mod utils;
 mod types;
 
+use std::time::SystemTime;
 use rand::random;
 pub use types::{Face};
 use utils::{rot};
@@ -9,7 +10,7 @@ const CUBE_OPERATIONS_CODE: [char; 12] = [
     'F', 'f', 'B', 'b', 'L', 'l', 'R', 'r', 'U', 'u', 'D', 'd'];
 
 pub struct Cube {
-    pub start_time: i64,
+    pub start_time: u128,
     pub last_step: String,
     pub front: Face,
     pub back: Face,
@@ -20,7 +21,7 @@ pub struct Cube {
 }
 impl Cube {
     pub fn new() -> Cube {
-        let start_time = 0;
+        let start_time = SystemTime::now().duration_since(SystemTime::UNIX_EPOCH).unwrap().as_millis();
         let last_step = String::from("");
         Cube {
             start_time,
@@ -34,7 +35,7 @@ impl Cube {
         }
     }
     pub fn reset(&mut self) {
-        self.start_time = 0;
+        self.start_time = SystemTime::now().duration_since(SystemTime::UNIX_EPOCH).unwrap().as_millis();
         self.front = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
         self.back = [[10, 11, 12], [13, 14, 15], [16, 17, 18]];
         self.left = [[19, 20, 21], [22, 23, 24], [25, 26, 27]];
