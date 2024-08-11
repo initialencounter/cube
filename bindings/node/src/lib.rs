@@ -2,7 +2,7 @@
 
 #[macro_use]
 extern crate napi_derive;
-use cube_lib::{Cube,Face};
+use cube_lib::{Cube};
 
 #[napi(js_name = "CubeCore")]
 pub struct CubeCore {
@@ -24,7 +24,7 @@ impl CubeCore {
 
     #[napi]
     pub fn get_start_time(&self) -> i64 {
-        self.inner.start_time
+        self.inner.start_time as i64
     }
 
     #[napi]
