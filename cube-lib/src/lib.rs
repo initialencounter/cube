@@ -8,10 +8,9 @@ use utils::{rot};
 const CUBE_OPERATIONS_CODE: [char; 12] = [
     'F', 'f', 'B', 'b', 'L', 'l', 'R', 'r', 'U', 'u', 'D', 'd'];
 
-#[derive(Clone)]
 pub struct Cube {
     pub start_time: i64,
-    pub last_step: Vec<char>,
+    pub last_step: String,
     pub front: Face,
     pub back: Face,
     pub left: Face,
@@ -22,7 +21,7 @@ pub struct Cube {
 impl Cube {
     pub fn new() -> Cube {
         let start_time = 0;
-        let last_step = Vec::new();
+        let last_step = String::from("");
         Cube {
             start_time,
             last_step,
