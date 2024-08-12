@@ -1,0 +1,18 @@
+[package]
+name = "cube-rs"
+description = "魔方 核心库"
+version = "0.1.0"
+edition = "2021"
+authors = ["inintencunter <2911583893@qq.com>"]
+homepage = "https://github.com/initialencounter/cube"
+repository = "https://github.com/initialencounter/cube"
+license = "AGPL-3"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "cube_rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = "0.22.0"
+cube-lib = { path = "../../cube-lib", version = "0.2.0" }

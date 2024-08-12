@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "nonebot-plugin-cube"
+version = "1.0.6"
+description = "Rubik's Cube plugin based on nonebot framework,基于nonebot框架的魔方插件"
+authors = ["initialencounter <2911583893@qq.com>"]
+license = "AGPL-3.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+nonebot2 = "^2.0.0b2"
+nonebot-adapter-onebot = "^2.0.0b1"
+Pillow = "^9.0.0"
+cube-rs = "^0.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
