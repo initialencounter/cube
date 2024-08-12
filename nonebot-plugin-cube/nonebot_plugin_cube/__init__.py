@@ -14,6 +14,7 @@ game = on_command('魔方', aliases={"mf", "cube", "c"}, priority=20)
 group_id_list = []  # 记录当前已开游戏的群号的列表
 obj_dist: Dict[int, CubeCore] = {}  # 记录魔方对象
 
+
 @game.handle()
 async def _(event: GroupMessageEvent, args: Message = CommandArg()):
     group_id = event.group_id
@@ -78,6 +79,6 @@ async def send_rank(event: GroupMessageEvent):  # 发送群排名
 
 
 def duration(start_time: int) -> str:
-    dt = (time.time()*1000 - start_time)/1000
+    dt = (time.time() * 1000 - start_time) / 1000
     ms = str(dt).split('.')[1][:3]
     return time.strftime('%H:%M:%S:', time.gmtime(dt)) + ms

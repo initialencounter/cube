@@ -5,7 +5,7 @@ from cube_rs import CubeCore
 
 class DrawCube:
     def __init__(self, newmf):
-        self.lst = [newmf[4],newmf[2],newmf[0],newmf[3],newmf[1],newmf[5]]
+        self.lst = [newmf[4], newmf[2], newmf[0], newmf[3], newmf[1], newmf[5]]
         self.face_id = [[0, 1], [1, 0], [1, 1], [1, 2], [1, 3], [2, 1]]
         self.color = {
             1: 'red', 2: 'red', 3: 'red', 4: 'red', 5: 'red', 6: 'red', 7: 'red', 8: 'red', 9: 'red',
