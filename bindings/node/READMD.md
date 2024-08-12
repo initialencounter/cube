@@ -1,3 +1,10 @@
+# @initencounter/cube
+
+魔方核心库
+
+## example
+
+```javascript
 import {CubeCore} from './index.js';
 import {writeFileSync} from 'fs';
 
@@ -211,3 +218,4 @@ let svg = `<svg id="图层_1" data-name="图层 1" xmlns="http://www.w3.org/2000
 `
 
 writeFileSync('./test.svg', svg)
+```
