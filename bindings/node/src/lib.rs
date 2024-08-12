@@ -48,7 +48,7 @@ impl CubeCore {
     }
 
     #[napi]
-    pub fn is_solved(&mut self) -> bool {
+    pub fn is_solved(&self) -> bool {
         self.inner.is_solved()
     }
 }
