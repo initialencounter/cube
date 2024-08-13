@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nonebot-plugin-cube"
-version = "1.0.6"
+version = "1.0.7"
 description = "Rubik's Cube plugin based on nonebot framework,基于nonebot框架的魔方插件"
 authors = ["initialencounter <2911583893@qq.com>"]
 license = "AGPL-3.0"
