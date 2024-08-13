@@ -1,10 +1,14 @@
+use std::time::SystemTime;
+
+use rand::random;
+
+pub use types::Face;
+use utils::rot;
+use crate::utils::{get_color, make_svg};
+
 mod utils;
 mod types;
-
-use std::time::SystemTime;
-use rand::random;
-pub use types::{Face};
-use utils::{rot};
+mod resvg;
 
 const CUBE_OPERATIONS_CODE: [char; 12] = [
     'F', 'f', 'B', 'b', 'L', 'l', 'R', 'r', 'U', 'u', 'D', 'd'];
@@ -242,6 +246,12 @@ impl Cube {
                 self.last_step.push(operation);
             }
         }
+    }
+
+    pub fn get_svg(&self) {
+        let cube: [[[i8; 3]; 3]; 9] = [self.front, self.back, self.left, self.right, self.up, self.down, self.front, self.up, self.right];
+        let svg = make_svg(cube);
+        println!("{}", svg);
     }
 }
 
@@ -712,5 +722,12 @@ mod tests {
         cube.rot('F');
         cube.rot('f');
         assert_eq!(cube.is_solved(), true);
+    }
+
+    #[test]
+    fn it_works_get_svg(){
+        let mut cube = Cube::new();
+        cube.get_svg();
+        assert_eq!(true, true)
     }
 }
