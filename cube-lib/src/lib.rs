@@ -4,7 +4,8 @@ use rand::random;
 
 pub use types::Face;
 use utils::rot;
-use crate::utils::{get_color, make_svg};
+
+use crate::utils::make_svg;
 
 mod utils;
 mod types;
@@ -248,10 +249,14 @@ impl Cube {
         }
     }
 
-    pub fn get_svg(&self) {
+    pub fn get_svg(&self) -> String {
         let cube: [[[i8; 3]; 3]; 9] = [self.front, self.back, self.left, self.right, self.up, self.down, self.front, self.up, self.right];
-        let svg = make_svg(cube);
-        println!("{}", svg);
+        make_svg(cube)
+    }
+
+    pub fn get_svg_base64_png(&self) -> String {
+        let svg = self.get_svg();
+        resvg::render(svg)
     }
 }
 
@@ -725,9 +730,17 @@ mod tests {
     }
 
     #[test]
-    fn it_works_get_svg(){
+    fn it_works_get_svg() {
         let mut cube = Cube::new();
         cube.get_svg();
+        assert_eq!(true, true)
+    }
+
+    #[test]
+    fn it_works_get_svg_base64_png() {
+        let mut cube = Cube::new();
+        let base64 = cube.get_svg_base64_png();
+        println!("{}", base64);
         assert_eq!(true, true)
     }
 }
