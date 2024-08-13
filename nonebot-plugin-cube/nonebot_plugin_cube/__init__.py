@@ -14,8 +14,10 @@ from .rank import add_point, get_rank, get_point
 __plugin_meta__ = PluginMetadata(
     name="魔方",
     description="这是一个魔方插件",
-    usage="在QQ群玩魔方",
+    usage="https://github.com/initialencounter/cube/blob/main/nonebot-plugin-cube/README.md",
     type="application",
+    homepage="https://github.com/initialencounter/cube",
+    supported_adapters={"~onebot.v11"},
     extra={},
 )
 
