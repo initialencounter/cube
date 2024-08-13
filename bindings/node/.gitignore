@@ -197,4 +197,6 @@ Cargo.lock
 *.node
 test.mjs
 test.svg
+test.png
+example.mjs
 .idea
