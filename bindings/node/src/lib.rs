@@ -48,6 +48,11 @@ impl CubeCore {
     }
 
     #[napi]
+    pub fn get_svg_base64_png(&self) -> String {
+        self.inner.get_svg_base64_png()
+    }
+
+    #[napi]
     pub fn is_solved(&self) -> bool {
         self.inner.is_solved()
     }
