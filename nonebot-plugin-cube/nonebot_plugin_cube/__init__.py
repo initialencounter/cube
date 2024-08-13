@@ -1,6 +1,7 @@
 import time
 from typing import Dict
 
+from nonebot.plugin import PluginMetadata
 from nonebot import on_command
 from nonebot.adapters.onebot.v11 import MessageSegment
 from nonebot.adapters import Message
@@ -9,6 +10,14 @@ from .render import DrawCube
 from cube_rs import CubeCore
 from nonebot.adapters.onebot.v11 import GroupMessageEvent
 from .rank import add_point, get_rank, get_point
+
+__plugin_meta__ = PluginMetadata(
+    name="魔方",
+    description="这是一个魔方插件",
+    usage="在QQ群玩魔方",
+    type="application",
+    extra={},
+)
 
 game = on_command('魔方', aliases={"mf", "cube", "c"}, priority=20)
 group_id_list = []  # 记录当前已开游戏的群号的列表
