@@ -12,5 +12,6 @@ export declare class CubeCore {
   getLastStep(): string
   scramble(steps: number): void
   getSvgBase64Png(): string
+  getSvg(): string
   isSolved(): boolean
 }

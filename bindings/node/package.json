@@ -1,6 +1,6 @@
 {
   "name": "@initencounter/cube",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "index.js",
   "types": "index.d.ts",
   "napi": {
@@ -28,6 +28,9 @@
   },
   "homepage": "https://github.com/initialencounter/cube/tree/main/bindings/node",
   "license": "AGPL-3.0",
+  "dependencies": {
+    "env-paths": "^2.2.0"
+  },
   "devDependencies": {
     "@napi-rs/cli": "^2.18.4",
     "ava": "^6.0.1"

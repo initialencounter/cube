@@ -1,0 +1,34 @@
+{
+  "name": "@initencounter/cube-linux-arm64-musl",
+  "version": "0.0.0",
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "arm64"
+  ],
+  "author": {
+    "name": "initencounter",
+    "email": "2911583893@qq.com",
+    "url": "https://github.com/initialencounter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/initialencounter/cube"
+  },
+  "bugs": {
+    "url": "https://github.com/initialencounter/cube/issues"
+  },
+  "homepage": "https://github.com/initialencounter/cube/tree/main/bindings/node",
+  "main": "cube.linux-arm64-musl.node",
+  "files": [
+    "cube.linux-arm64-musl.node"
+  ],
+  "license": "AGPL-3.0",
+  "engines": {
+    "node": ">= 10"
+  },
+  "libc": [
+    "musl"
+  ]
+}
