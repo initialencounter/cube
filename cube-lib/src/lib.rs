@@ -216,18 +216,18 @@ impl Cube {
 
     pub fn rot(&mut self, operation: char) {
         match operation {
-            'F' => self.rot_front(false),
-            'f' => self.rot_front(true),
-            'B' => self.rot_back(false),
-            'b' => self.rot_back(true),
-            'L' => self.rot_left(false),
-            'l' => self.rot_left(true),
-            'R' => self.rot_right(false),
-            'r' => self.rot_right(true),
-            'U' => self.rot_up(false),
-            'u' => self.rot_up(true),
-            'D' => self.rot_down(false),
-            'd' => self.rot_down(true),
+            'F' => self.rot_front(true),
+            'f' => self.rot_front(false),
+            'B' => self.rot_back(true),
+            'b' => self.rot_back(false),
+            'L' => self.rot_left(true),
+            'l' => self.rot_left(false),
+            'R' => self.rot_right(true),
+            'r' => self.rot_right(false),
+            'U' => self.rot_up(true),
+            'u' => self.rot_up(false),
+            'D' => self.rot_down(true),
+            'd' => self.rot_down(false),
             _ => (),
         }
     }
