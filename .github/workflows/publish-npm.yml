@@ -136,7 +136,10 @@ jobs:
         with:
           path: bindings/node/artifacts
       - name: Move artifacts
-        run: yarn artifacts
+        run: |
+          ls artifacts
+          ls -R ./npm
+          yarn artifacts
       - name: List packages
         run: ls -R ./npm
         shell: bash
