@@ -250,7 +250,7 @@ impl Cube {
     }
 
     pub fn get_svg(&self) -> String {
-        let cube: [[[i8; 3]; 3]; 9] = [self.front, self.back, self.left, self.right, self.up, self.down, self.front, self.up, self.right];
+        let cube: [[[i8; 3]; 3]; 9] = [self.left, self.front, self.up, self.down, self.right, self.back, self.front, self.up, self.right];
         make_svg(cube)
     }
 
