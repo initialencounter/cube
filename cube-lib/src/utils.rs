@@ -28,11 +28,11 @@ pub fn rot(face: Face, rev: bool) -> Face {
 
 pub fn get_color(id: i8) -> &'static str {
     match id {
-        1..=9 => "red",
-        10..=18 => "blue",
-        19..=27 => "yellow",
-        28..=36 => "orange",
-        37..=45 => "green",
+        1..=9 => "blue",
+        10..=18 => "green",
+        19..=27 => "orange",
+        28..=36 => "red",
+        37..=45 => "yellow",
         46..=54 => "white",
         _ => "transparent",
     }
