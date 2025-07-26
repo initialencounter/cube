@@ -3,11 +3,11 @@
 use std::sync::Arc;
 
 use once_cell::sync::Lazy;
+use resvg::usvg::fontdb;
 use resvg::{
     tiny_skia::{Pixmap, Transform},
     usvg::{self},
 };
-use resvg::usvg::fontdb;
 
 const FAIL_IMAGE: &str = r"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXN
 SR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHjSURBVGhD7Zg/MgRBFMaHQCoRSDgACTEBmcw
@@ -37,16 +37,14 @@ pub fn render(svg: String) -> String {
             Err(_) => return FAIL_IMAGE.to_string(),
         }
     };
-    let size = match tree
-        .size()
-        .to_int_size()
-        .scale_to_width(600)
-    {
+    let size = match tree.size().to_int_size().scale_to_width(600) {
         Some(size) => size,
         None => return FAIL_IMAGE.to_string(),
     };
-    let transform = Transform::from_scale(size.width() as f32 / tree.size().width(),
-                                          size.height() as f32 / tree.size().height(), );
+    let transform = Transform::from_scale(
+        size.width() as f32 / tree.size().width(),
+        size.height() as f32 / tree.size().height(),
+    );
     let mut pixmap = match Pixmap::new(600, 325) {
         Some(pixmap) => pixmap,
         _ => return FAIL_IMAGE.to_string(),
@@ -71,7 +69,8 @@ mod tests {
 
     #[test]
     fn it_works() {
-        render(String::from(r#"<svg id='图层_1' data-name='图层 1' xmlns='http://www.w3.org/2000/svg'>
+        render(String::from(
+            r#"<svg id='图层_1' data-name='图层 1' xmlns='http://www.w3.org/2000/svg'>
     <rect class='cls-l10' x='0.25' y='59.25' width='12.39' height='12.49' fill='red'/>
     <path d='M12.39,63.5v12H.5v-12H12.39m.5-.5H0V76H12.89V63Z' transform='translate(0 -4)'/>
     <rect class='cls-l00' x='0.25' y='44.96' width='12.39' height='12.49' fill='red'/>
@@ -253,7 +252,8 @@ mod tests {
     <path d='M242.5,50.87V62.24l-6.05,7.2V58.08l6.05-7.21m.5-1.37L236,57.9V70.81L243,62.42V49.5Z'
           transform='translate(0 -4)'/>
 </svg>
-"#));
+"#,
+        ));
         assert_eq!(true, true);
     }
 }

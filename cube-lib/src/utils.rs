@@ -39,7 +39,8 @@ pub fn get_color(id: i8) -> &'static str {
 }
 
 pub fn make_svg(cube: [[[i8; 3]; 3]; 9]) -> String {
-    let svg_template = [r"<svg id='cube' data-name='cube' xmlns='http://www.w3.org/2000/svg'>
+    let svg_template = [
+        r"<svg id='cube' data-name='cube' xmlns='http://www.w3.org/2000/svg'>
       <!-- L orange -->
       <rect class='1' x='0.25' y='44.96' width='12.39' height='12.49' fill='",
         r"'/>
@@ -300,9 +301,11 @@ pub fn make_svg(cube: [[[i8; 3]; 3]; 9]) -> String {
       <polygon class='9' points='236.2 53.99 242.75 46.19 242.75 58.33 236.2 66.13 236.2 53.99' fill='",
         r"'/>
       <path d='M242.5,50.87V62.24l-6.05,7.2V58.08l6.05-7.21m.5-1.37L236,57.9V70.81L243,62.42V49.5Z' transform='translate(0 -4)'/>
-</svg>"];
+</svg>",
+    ];
     let mut svg = String::from("");
-    let cube: Vec<_>  = cube.iter()
+    let cube: Vec<_> = cube
+        .iter()
         .flat_map(|matrix| matrix.iter())
         .flat_map(|row| row.iter())
         .cloned()
@@ -319,31 +322,15 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let face = [
-            [1, 2, 3],
-            [4, 5, 6],
-            [7, 8, 9]
-        ];
+        let face = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
         let result = rot(face, false);
-        assert_eq!(result, [
-            [7, 4, 1],
-            [8, 5, 2],
-            [9, 6, 3]
-        ]);
+        assert_eq!(result, [[7, 4, 1], [8, 5, 2], [9, 6, 3]]);
     }
 
     #[test]
     fn it_works_rev() {
-        let face = [
-            [1, 2, 3],
-            [4, 5, 6],
-            [7, 8, 9]
-        ];
+        let face = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
         let result = rot(face, true);
-        assert_eq!(result, [
-            [3, 6, 9],
-            [2, 5, 8],
-            [1, 4, 7]
-        ]);
+        assert_eq!(result, [[3, 6, 9], [2, 5, 8], [1, 4, 7]]);
     }
 }

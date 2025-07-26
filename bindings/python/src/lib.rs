@@ -1,5 +1,5 @@
-use pyo3::prelude::*;
 use cube_lib::Cube;
+use pyo3::prelude::*;
 
 #[pyclass]
 pub struct CubeCore {
@@ -10,9 +10,7 @@ pub struct CubeCore {
 impl CubeCore {
     #[new]
     pub fn new() -> Self {
-        CubeCore {
-            inner: Cube::new(),
-        }
+        CubeCore { inner: Cube::new() }
     }
     pub fn rotate(&mut self, operations: String) {
         self.inner.rots(operations.as_str());
@@ -22,12 +20,19 @@ impl CubeCore {
         self.inner.start_time as i64
     }
 
-    pub fn reset(&mut self){
+    pub fn reset(&mut self) {
         self.inner.reset();
     }
 
-    pub fn get_cube(&self) -> [[[i8; 3]; 3];6]{
-        [self.inner.front, self.inner.back, self.inner.left, self.inner.right, self.inner.up, self.inner.down]
+    pub fn get_cube(&self) -> [[[i8; 3]; 3]; 6] {
+        [
+            self.inner.front,
+            self.inner.back,
+            self.inner.left,
+            self.inner.right,
+            self.inner.up,
+            self.inner.down,
+        ]
     }
 
     pub fn get_last_step(&self) -> String {
