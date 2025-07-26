@@ -2,75 +2,81 @@
 
 #[macro_use]
 extern crate napi_derive;
-use cube_lib::{Cube};
+use cube_lib::Cube;
 
 #[napi(js_name = "CubeCore")]
 pub struct CubeCore {
-    inner: Cube,
+  inner: Cube,
 }
 
 #[napi]
 impl CubeCore {
-    #[napi(constructor)]
-    pub fn new() -> Self {
-        CubeCore {
-            inner: Cube::new(),
-        }
-    }
-    #[napi]
-    pub fn rotate(&mut self, operations: String) {
-        self.inner.rots(operations.as_str());
-    }
+  #[napi(constructor)]
+  pub fn new() -> Self {
+    CubeCore { inner: Cube::new() }
+  }
+  #[napi]
+  pub fn rotate(&mut self, operations: String) {
+    self.inner.rots(operations.as_str());
+  }
 
-    #[napi]
-    pub fn get_start_time(&self) -> i64 {
-        self.inner.start_time as i64
-    }
+  #[napi]
+  pub fn get_start_time(&self) -> i64 {
+    self.inner.start_time as i64
+  }
 
-    #[napi]
-    pub fn reset(&mut self){
-        self.inner.reset();
-    }
+  #[napi]
+  pub fn reset(&mut self) {
+    self.inner.reset();
+  }
 
-    #[napi]
-    pub fn get_cube(&self) -> [[[i8; 3]; 3];6]{
-        [self.inner.front, self.inner.back, self.inner.left, self.inner.right, self.inner.up, self.inner.down]
-    }
+  #[napi]
+  pub fn get_cube(&self) -> [[[i8; 3]; 3]; 6] {
+    [
+      self.inner.front,
+      self.inner.back,
+      self.inner.left,
+      self.inner.right,
+      self.inner.up,
+      self.inner.down,
+    ]
+  }
 
-    #[napi]
-    pub fn get_last_step(&self) -> String {
-        self.inner.last_step.clone()
-    }
+  #[napi]
+  pub fn get_last_step(&self) -> String {
+    self.inner.last_step.clone()
+  }
 
-    #[napi]
-    pub fn scramble(&mut self, steps: u32) {
-        self.inner.scramble(steps);
-    }
+  #[napi]
+  pub fn scramble(&mut self, steps: u32) {
+    self.inner.scramble(steps);
+  }
 
-    #[napi]
-    pub fn get_svg_base64_png(&self) -> String {
-        self.inner.get_svg_base64_png()
-    }
+  #[napi]
+  pub fn get_svg_base64_png(&self) -> String {
+    self.inner.get_svg_base64_png()
+  }
 
-    #[napi]
-    pub fn get_svg(&self) -> String {
-        self.inner.get_svg()
-    }
+  #[napi]
+  pub fn get_svg(&self) -> String {
+    self.inner.get_svg()
+  }
 
-    #[napi]
-    pub fn is_solved(&self) -> bool {
-        self.inner.is_solved()
-    }
+  #[napi]
+  pub fn is_solved(&self) -> bool {
+    self.inner.is_solved()
+  }
 }
 
 mod tests {
-    use super::*;
+  use super::*;
 
-    #[test]
-    fn it_works() {
-        let cube = CubeCore::new();
-        let svg = cube.get_svg();
-        assert_eq!(r"<svg id='cube' data-name='cube' xmlns='http://www.w3.org/2000/svg'>
+  #[test]
+  fn it_works() {
+    let cube = CubeCore::new();
+    let svg = cube.get_svg();
+    assert_eq!(
+      r"<svg id='cube' data-name='cube' xmlns='http://www.w3.org/2000/svg'>
       <!-- L orange -->
       <rect class='1' x='0.25' y='44.96' width='12.39' height='12.49' fill='orange'/>
       <path d='M12.39,49.21v12H.5v-12H12.39m.5-.5H0v13H12.89v-13Z' transform='translate(0 -4)'/>
@@ -250,6 +256,8 @@ mod tests {
       <path d='M234.75,60.11V71.47l-6.05,7.21V67.31l6.05-7.2m.5-1.37-7.05,8.39V80.05l7.05-8.4V58.74Z' transform='translate(0 -4)'/>
       <polygon class='9' points='236.2 53.99 242.75 46.19 242.75 58.33 236.2 66.13 236.2 53.99' fill='red'/>
       <path d='M242.5,50.87V62.24l-6.05,7.2V58.08l6.05-7.21m.5-1.37L236,57.9V70.81L243,62.42V49.5Z' transform='translate(0 -4)'/>
-</svg>", svg.as_str());
-    }
+</svg>",
+      svg.as_str()
+    );
+  }
 }
